@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #1a1a2e;
+        color: #e0e0e0;
+        margin-top: 50px;
+      }
+
+      h2 {
+        text-align: center;
+        color: chocolate;
+      }
+
+      form {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      input[type="text"],
+      input[type="number"] {
+        width: 10%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 3px solid #ccc;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        outline: none;
+      }
+
+      input[type="submit"] {
+        width: 10%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 0px solid #ccc;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        outline: none;
+      }
+
+      input[type="text"]:focus,
+      input[type="number"]:focus {
+        border: 3px solid #555;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: separate;
+        align-self: center;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid wheat;
+        padding: 15px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Proses Data Transaksi</h2>
+
+    <form id="transaksiForm">
+      No Faktur: <input type="text" id="noFaktur" /><br />
+      Jumlah Transaksi: <input type="number" id="jumlahTransaksi" /><br />
+      Harga Jual: <input type="number" id="hargaJual" /><br />
+      <input type="submit" value="Proses" />
+    </form>
+
+    <table id="hasilTransaksi">
+      <tr>
+        <th>No Faktur</th>
+        <th>Jumlah Transaksi</th>
+        <th>Harga Jual</th>
+        <th>Total Harga</th>
+        <th>Diskon</th>
+      </tr>
+    </table>
+
+    <script>
+      document.getElementById("transaksiForm").onsubmit = function (event) {
+        event.preventDefault();
+
+        var noFaktur = document.getElementById("noFaktur").value;
+        var jumlahTransaksi = document.getElementById("jumlahTransaksi").value;
+        var hargaJual = document.getElementById("hargaJual").value;
+
+        var totalHarga = jumlahTransaksi * hargaJual;
+        var diskon = 0;
+
+        if (noFaktur == "B01" && jumlahTransaksi >= 10) {
+          diskon = totalHarga * 0.07;
+        }
+
+        var table = document.getElementById("hasilTransaksi");
+        var row = table.insertRow(-1);
+        row.insertCell(0).innerHTML = noFaktur;
+        row.insertCell(1).innerHTML = jumlahTransaksi;
+        row.insertCell(2).innerHTML = hargaJual;
+        row.insertCell(3).innerHTML = totalHarga;
+        row.insertCell(4).innerHTML = diskon;
+      };
+    </script>
+  </body>
+</html>

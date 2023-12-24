@@ -1,0 +1,202 @@
+<HTML>
+    <HEAD>
+        <TITLE>Proses nilai Mhs</TITLE>
+        <style type="text/css">
+            body
+            {
+                background-color :aqua;
+            }
+        </style>
+            
+    </HEAD>
+    <BODY>
+        <FORM NAME ="form">
+            <H1 align="center"><Br>Proses nilai Mahasiswa</H1>
+            <table border="1", align="center">
+                <tr>
+                    <td>
+                        NIM          
+                    </td>
+                    <td>
+                        <input type="text" size="11" name="nim">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Nama          
+                    </td>
+                    <td>
+                        <input type="text" size="11" name="nama">
+                    </td>
+                </tr>
+                <tr>    
+                    <td>
+                        Tempat lahir dan tanggal lahir         
+                    </td>
+                    <td>
+                        <input type="text" size="11" name="tempatLahir">
+                    </td>
+                    <td>
+                        <input type="text" size="11" name="tglLahir">
+                    </td>
+                </tr>
+                <tr>
+                    <tr>    
+                        <td>
+                            Alamat          
+                        </td>
+                        <td>
+                            <input type="text" size="11" name="alamat">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Jenis Kelamin          
+                        </td>
+                        <td>
+                            <input type="radio" value="Pria" name="gender">Pria
+                            <input type="radio" value="wanita" name="gender">Wanita
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Program studi          
+                        </td>
+                        <td>
+                            <select id="prodi" Size="1"> 
+                                <option value ="Teknik Informatika"> Teknik Informatika </option> 
+                                <option value ="Sistem Informasi"> Sistem Informasi</option> 
+                                <option value ="Teknik Komputer"> Teknik Komputer </option> 
+                                <option value ="Teknik Industri"> Teknik Industri </option>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            kelas          
+                        </td>
+                        <td>
+                            <input type="checkbox" value="reguler" id="kelas">Reguler 
+                        </td>
+                    </tr>
+                    <td>
+                        <INPUT TYPE="button" value="Simpan" onclick="simpan()">
+                        <INPUT TYPE="reset" value="Ulang">        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        NIM        
+                    </td>
+                    <td>
+                        <input type="text" size="11" name="nim_">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Nama       
+                    </td>
+                    <td>
+                        <input type="text" size="11" name="nama_">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Tempat dan Tgl Lahir        
+                    </td>
+                    <td>
+                        <input type="text" size="11" name="tempatLahir_">
+                    </td>
+                    <td>
+                        <input type="text" size="11" name="tglLahir_">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Alamat       
+                    </td>
+                    <td>
+                        <input type="text" size="11" name="alamat_">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Jenis Kelamin       
+                    </td>
+                    <td>
+                        <input type="text" size="11" name="gender_">
+                    </td>
+                </tr>
+                    <td>
+                        Program Studi       
+                    </td>
+                    <td>
+                        <input type="text" size="11" name="prodi_">
+                    </td>
+                </tr>
+                 </tr>
+                    <td>
+                        Kelas       
+                    </td>
+                    <td>
+                        <input type="text" size="11" name="kelas_">
+                    </td>
+                </tr>
+            </table>
+        </FORM>
+
+        <P><SCRIPT language="JavaScript">
+        function simpan()
+        {
+            var vnim=" ";
+            var vnama=" ";
+            var vtempatLahir=" ";
+            var vtglLahir=" ";
+            var valamat=" ";
+            var vjk=" ";
+            var vprodi=" ";
+            var vkelas =" ";
+
+            var vnim = (document.form.nim.value);
+            var vnama = (document.form.nama.value);
+            var vtempatLahir=(document.form.tempatLahir.value);
+            var vtglLahir=(document.form.tglLahir.value);
+            var valamat=(document.form.alamat.value);
+
+            var radioButtons = document.getElementsByName('gender');
+            var selectedValue;
+            for(var i = 0; i < radioButtons.length; i++) 
+            {
+                if(radioButtons[i].checked) 
+                {
+                    selectedValue = radioButtons[i].value;
+                    break;
+                }
+            }
+            
+            document.form.nim_.value=vnim; 
+            document.form.nama_.value=vnama;
+            document.form.tempatLahir_.value=vtempatLahir;
+            document.form.tglLahir_.value=vtglLahir;
+            document.form.alamat_.value=valamat;
+            document.form.gender_.value=selectedValue;
+
+            var comboBox = document.getElementById("prodi");
+            var selectedValue = comboBox.value;
+            document.form.prodi_.value=selectedValue;
+
+            var checkbox1 = document.getElementById("kelas").checked;
+            if (checkbox1==true)
+            {
+                vkelas="reguler";
+            }
+            else
+            {
+                vkelas="non reguler";
+            }
+            document.form.kelas_.value=vkelas;
+
+
+        }
+        </SCRIPT></P>
+    </BODY>
+</HTML>
